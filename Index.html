@@ -11,81 +11,197 @@
         box-sizing: border-box;
       }
       body {
-        font-family: Arial, sans-serif;
-        background-color: rgb(8, 8, 43);
-        color: white;
+        font-family:
+          "Segoe UI",
+          system-ui,
+          -apple-system,
+          sans-serif;
+        background-color: #0d0e15;
+        color: #f3f4f6;
+        overflow-x: hidden;
+        line-height: 1.5;
+      }
+      header {
+        height: 8vh;
       }
       nav {
         display: flex;
-        justify-content: space-around;
+        justify-content: space-between;
         align-items: center;
-        padding: 20px;
+        padding: 0 40px;
         width: 100%;
         top: 0;
-        background-color: rgba(20, 20, 76, 0.98);
-        border-bottom: 1px solid #232354;
+        left: 0;
+        background-color: rgba(13, 14, 21, 0.85);
+        border-bottom: 1px solid #1f2235;
         height: 8vh;
         position: fixed;
         z-index: 1000;
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
       }
       nav ul {
         display: flex;
         justify-content: center;
         align-items: center;
+        gap: 8px;
       }
       nav ul li {
         list-style: none;
-        margin: 0 15px;
-        cursor: pointer;
-        box-sizing: border-box;
-        padding: 5px 10px;
-        transition: all 0.3s ease;
-        background-color: transparent;
-        border: 2px solid transparent;
-        border-radius: 5px;
-        box-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
-        margin: 0 23px;
+      }
+      nav ul li a {
+        color: #9ca3af;
+        text-decoration: none;
+        font-weight: 500;
+        padding: 8px 16px;
+        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        border: 1px solid transparent;
+        border-radius: 6px;
+        display: inline-block;
+      }
+      nav ul li a:hover,
+      nav ul li a:focus {
+        border-color: #6d28d9;
+        color: #06b6d4;
+        background-color: rgba(6, 182, 212, 0.05);
+        outline: none;
       }
       .leftnav {
-        font-size: 1.8rem;
-        font-weight: bold;
-        text-wrap: nowrap;
-        color: rgb(219, 213, 221);
-        border-radius: 5px;
-        box-shadow: 0 0 5px rgba(50, 0, 106, 0.8);
-        height: auto;
-        width: auto;
-        padding: 10px 20px;
-        font-family: poppins;
-        margin-right: 10px;
+        font-size: 1.5rem;
+        font-weight: 700;
+        white-space: nowrap;
+        color: #06b6d4;
       }
       .first {
         display: flex;
-        justify-content: space-around;
-        height: 92vh;
-        margin: 23px 0;
+        justify-content: space-between;
+        align-items: center;
+        min-height: 92vh;
+        padding: 40px;
+        max-width: 1400px;
+        margin: 0 auto 120px auto;
+        gap: 40px;
       }
       .left {
-        width: 40%;
-        background-color: rgb(255, 122, 96);
-        border-radius: 10px;
-        box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+        flex: 1;
+        min-height: 500px;
+        background-color: #161925;
+        border: 1px solid #22263f;
+        border-radius: 12px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
         display: flex;
-        color: rgb(8, 8, 43);
+        flex-direction: column;
+        color: #f3f4f6;
         justify-content: center;
-        align-items: center;
-        font-size: 1.5rem;
+        align-items: flex-start;
+        font-size: 2rem;
+        font-weight: bold;
+        padding: 50px;
+      }
+      .left p {
+        width: 100%;
+        text-wrap: balance;
+      }
+      .typed-container {
+        color: #ffffff;
+        margin-top: 8px;
+        min-height: 3rem;
       }
       .right {
-        width: 40%;
-        background-color: rgb(255, 122, 96);
-        border-radius: 10px;
-        box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+        width: 35%;
+        max-width: 450px;
+        aspect-ratio: 1 / 1;
         display: flex;
-        color: rgb(8, 8, 43);
         justify-content: center;
         align-items: center;
+        overflow: hidden;
+        border-radius: 12px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        border: 1px solid #22263f;
+      }
+      .right img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        image-rendering: -webkit-optimize-contrast;
+      }
+      #extend {
+        margin-top: 16px;
+        font-size: 1.1rem;
+        font-weight: 400;
+        color: #9ca3af;
+      }
+
+      #kartik-name {
+        font-family: inherit;
+        display: inline-block;
+        animation: rgbShift 4s ease-in-out infinite;
+        transition:
+          text-shadow 0.3s ease,
+          color 0.3s ease;
+      }
+      #kartik-name:hover {
+        color: #06b6d4 !important;
+        text-shadow: 0 0 15px rgba(6, 182, 212, 0.6);
+        animation-play-state: paused;
+      }
+
+      @keyframes rgbShift {
+        0%,
+        100% {
+          color: #a78bfa;
+        }
+        50% {
+          color: #22d3ee;
+        }
+      }
+
+      /* Responsive Core Layout Engine */
+      @media (max-width: 1024px) {
+        .first {
+          padding: 20px;
+          gap: 20px;
+        }
+        .left {
+          padding: 30px;
+          font-size: 1.75rem;
+        }
+      }
+
+      @media (max-width: 768px) {
+        nav {
+          padding: 0 20px;
+        }
+        nav ul {
+          display: none; /* Recommended layout extension: build hamburger menu logic here */
+        }
+        .first {
+          flex-direction: column-reverse;
+          height: auto;
+          margin-top: 8vh;
+        }
+        .left,
+        .right {
+          width: 100%;
+          max-width: 100%;
+        }
+        .right {
+          aspect-ratio: 4 / 3;
+        }
+        .left {
+          min-height: auto;
+        }
+      }
+      #element {
         font-size: 1.5rem;
+        font-weight: 500;
+        color: #5686e4;
+      }
+      .second {
+        max-width: 1400px;
+        margin: 40px auto;
+        padding: 0 40px;
       }
     </style>
   </head>
@@ -95,24 +211,62 @@
         <div class="leftnav">Kartik's Portfolio</div>
         <div class="rightnav">
           <ul>
-            <li>Home</li>
-            <li>About</li>
-            <li>Projects</li>
-            <li>Services</li>
-            <li>Contact Me</li>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#contact">Contact Me</a></li>
           </ul>
         </div>
       </nav>
     </header>
     <main>
-      <section class="first">
-        <div class="left">Left</div>
-        <div class="right">Right</div>
+      <section class="first" id="home">
+        <div class="left">
+          <p>
+            Hi, My name is
+            <span style="font-weight: bold; font-size: 2.5rem" id="kartik-name"
+              >Kartik</span
+            >
+          </p>
+          <div class="typed-container">
+            I am a <span id="element" style="color: #06b6d4"></span>
+          </div>
+          <div id="extend">Building optimized full-stack systems.</div>
+        </div>
+        <div class="right">
+          <img
+            src="/images/OIP (2).png"
+            sizes="(max-width: 768px) 90vw, 35vw"
+            alt="Kartik Portfolio Hero Image"
+            loading="eager"
+            decoding="async"
+          />
+        </div>
       </section>
-      <!-- <section class="second">
-        <div class="left">Left</div>
-        <div class="right">Right</div>
-      </section> -->
+      <hr />
+      <section class="second" id="about">
+        <p>What I have done so far</p>
+        <h1>Work Experience</h1>
+        <p></p>
+      </section>
     </main>
+
+    <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const typed = new Typed("#element", {
+          strings: [
+            "Web Developer",
+            "Full-Stack Engineer",
+            "Tech Enthusiast 🚀",
+          ],
+          loop: true,
+          typeSpeed: 50,
+          backSpeed: 30,
+          backDelay: 1500,
+        });
+      });
+    </script>
   </body>
 </html>
