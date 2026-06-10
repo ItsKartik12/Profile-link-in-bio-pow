@@ -22,8 +22,11 @@
         padding: 20px;
         width: 100%;
         top: 0;
-        background-color: #14143c;
+        background-color: rgba(20, 20, 76, 0.98);
         border-bottom: 1px solid #232354;
+        height: 8vh;
+        position: fixed;
+        z-index: 1000;
       }
       nav ul {
         display: flex;
@@ -41,24 +44,56 @@
         border: 2px solid transparent;
         border-radius: 5px;
         box-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
+        margin: 0 23px;
       }
-      .left {
-        font-size: 24px;
+      .leftnav {
+        font-size: 1.8rem;
         font-weight: bold;
         text-wrap: nowrap;
-        color: rgb(214, 220, 255);
-        box-shadow: 0 0 2px rgba(255, 255, 255, 0.5);
+        color: rgb(219, 213, 221);
+        border-radius: 5px;
+        box-shadow: 0 0 5px rgba(50, 0, 106, 0.8);
         height: auto;
         width: auto;
         padding: 10px 20px;
+        font-family: poppins;
+        margin-right: 10px;
+      }
+      .first {
+        display: flex;
+        justify-content: space-around;
+        height: 92vh;
+        margin: 23px 0;
+      }
+      .left {
+        width: 40%;
+        background-color: rgb(255, 122, 96);
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+        display: flex;
+        color: rgb(8, 8, 43);
+        justify-content: center;
+        align-items: center;
+        font-size: 1.5rem;
+      }
+      .right {
+        width: 40%;
+        background-color: rgb(255, 122, 96);
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+        display: flex;
+        color: rgb(8, 8, 43);
+        justify-content: center;
+        align-items: center;
+        font-size: 1.5rem;
       }
     </style>
   </head>
   <body>
     <header>
       <nav>
-        <div class="left">Kartik's Portfolio</div>
-        <div class="right">
+        <div class="leftnav">Kartik's Portfolio</div>
+        <div class="rightnav">
           <ul>
             <li>Home</li>
             <li>About</li>
@@ -69,5 +104,15 @@
         </div>
       </nav>
     </header>
+    <main>
+      <section class="first">
+        <div class="left">Left</div>
+        <div class="right">Right</div>
+      </section>
+      <!-- <section class="second">
+        <div class="left">Left</div>
+        <div class="right">Right</div>
+      </section> -->
+    </main>
   </body>
 </html>
