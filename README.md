@@ -29,4 +29,4 @@ This project acts as an lightweight, instant **Proof of Work (PoW)** showing fou
 Since this system relies on native browser capabilities, no node server wrappers or dependency setups are needed:
 1. Clone the repository to your machine:
 ```bash
-   git clone [https://github.com/YOUR_USERNAME/link-in-bio-pow.git](https://github.com/YOUR_USERNAME/link-in-bio-pow.git)
+   git clone [https://github.com/ItsKartiik093/Profile-link-in-bio-pow.git](https://github.com/ItsKartik093/Profile-link-in-bio-pow.git)
