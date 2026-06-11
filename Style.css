@@ -31,11 +31,7 @@ body {
     linear-gradient(90deg, rgba(6, 182, 212, 0.02) 1px, transparent 1px);
   background-size: 50px 50px;
   color: var(--text-primary);
-  font-family:
-    "Segoe UI",
-    system-ui,
-    -apple-system,
-    sans-serif;
+  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
   line-height: 1.6;
   overflow-x: hidden;
 }
@@ -71,11 +67,7 @@ nav {
   font-weight: 800;
   font-size: 1.25rem;
   letter-spacing: -0.5px;
-  background: linear-gradient(
-    135deg,
-    var(--text-primary) 30%,
-    var(--accent-cyan)
-  );
+  background: linear-gradient(135deg, var(--text-primary) 30%, var(--accent-cyan));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -98,7 +90,7 @@ nav {
 
 /* Elegant Animated Underline Hook */
 .rightnav a::after {
-  content: "";
+  content: '';
   position: absolute;
   bottom: 0;
   left: 0;
@@ -126,12 +118,7 @@ main {
 hr {
   border: 0;
   height: 1px;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    var(--border-color),
-    transparent
-  );
+  background: linear-gradient(90deg, transparent, var(--border-color), transparent);
   margin: 80px 0;
 }
 
@@ -232,7 +219,7 @@ hr {
 
 /* Soft Neon Backdrop Radial Blend */
 .right::before {
-  content: "";
+  content: '';
   position: absolute;
   width: 300px;
   height: 300px;
@@ -265,11 +252,7 @@ hr {
   font-weight: 800;
   letter-spacing: -0.5px;
   margin-bottom: 45px;
-  background: linear-gradient(
-    90deg,
-    var(--text-primary),
-    var(--text-secondary)
-  );
+  background: linear-gradient(90deg, var(--text-primary), var(--text-secondary));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -393,9 +376,7 @@ hr {
 .project-card:hover {
   transform: translateY(-6px);
   border-color: rgba(6, 182, 212, 0.3);
-  box-shadow:
-    0 12px 30px rgba(0, 0, 0, 0.4),
-    0 0 20px rgba(6, 182, 212, 0.05);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4), 0 0 20px rgba(6, 182, 212, 0.05);
 }
 
 .project-visual {
@@ -413,18 +394,13 @@ hr {
 
 /* Linear Scanning Accent effect */
 .project-visual::after {
-  content: "";
+  content: '';
   position: absolute;
   top: 0;
   left: -100%;
   width: 50%;
   height: 100%;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.03),
-    transparent
-  );
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.03), transparent);
   transform: skewX(-25deg);
   transition: 0.75s;
 }
@@ -433,22 +409,10 @@ hr {
   left: 150%;
 }
 
-.visual-dbms {
-  color: #38bdf8;
-  text-shadow: 0 0 12px rgba(56, 189, 248, 0.2);
-}
-.visual-guess {
-  color: #34d399;
-  text-shadow: 0 0 12px rgba(52, 211, 153, 0.2);
-}
-.visual-color {
-  color: #fbbf24;
-  text-shadow: 0 0 12px rgba(251, 191, 36, 0.2);
-}
-.visual-key {
-  color: #a78bfa;
-  text-shadow: 0 0 12px rgba(167, 139, 250, 0.2);
-}
+.visual-dbms { color: #38bdf8; text-shadow: 0 0 12px rgba(56, 189, 248, 0.2); }
+.visual-guess { color: #34d399; text-shadow: 0 0 12px rgba(52, 211, 153, 0.2); }
+.visual-color { color: #fbbf24; text-shadow: 0 0 12px rgba(251, 191, 36, 0.2); }
+.visual-key { color: #a78bfa; text-shadow: 0 0 12px rgba(167, 139, 250, 0.2); }
 
 .project-content {
   padding: 26px;
@@ -645,7 +609,7 @@ footer {
   flex: 1;
 }
 
-.contact-form input,
+.contact-form input, 
 .contact-form textarea {
   width: 100%;
   background: var(--bg-card);
@@ -731,24 +695,13 @@ footer {
 
 /* --- 10. Keyframes System Architecture --- */
 @keyframes float-illustration {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-12px);
-  }
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
 }
 
 @keyframes pulse-ambient {
-  0% {
-    opacity: 0.6;
-    transform: scale(0.95) translate(0, 0);
-  }
-  100% {
-    opacity: 0.9;
-    transform: scale(1.05) translate(5px, 5px);
-  }
+  0% { opacity: 0.6; transform: scale(0.95) translate(0, 0); }
+  100% { opacity: 0.9; transform: scale(1.05) translate(5px, 5px); }
 }
 
 /* --- 11. Clean Mobile Layout Adapters --- */
