@@ -1,0 +1,198 @@
+* {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family:
+          "Segoe UI",
+          system-ui,
+          -apple-system,
+          sans-serif;
+        background-color: #0d0e15;
+        color: #f3f4f6;
+        overflow-x: hidden;
+        line-height: 1.5;
+      }
+      header {
+        height: 8vh;
+      }
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 40px;
+        width: 100%;
+        top: 0;
+        left: 0;
+        background-color: rgba(13, 14, 21, 0.85);
+        border-bottom: 1px solid #1f2235;
+        height: 8vh;
+        position: fixed;
+        z-index: 1000;
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+      }
+      nav ul {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+      }
+      nav ul li {
+        list-style: none;
+      }
+      nav ul li a {
+        color: #9ca3af;
+        text-decoration: none;
+        font-weight: 500;
+        padding: 8px 16px;
+        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        border: 1px solid transparent;
+        border-radius: 6px;
+        display: inline-block;
+      }
+      nav ul li a:hover,
+      nav ul li a:focus {
+        border-color: #6d28d9;
+        color: #06b6d4;
+        background-color: rgba(6, 182, 212, 0.05);
+        outline: none;
+      }
+      .leftnav {
+        font-size: 1.5rem;
+        font-weight: 700;
+        white-space: nowrap;
+        color: #06b6d4;
+      }
+      .first {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        min-height: 92vh;
+        padding: 40px;
+        max-width: 1400px;
+        margin: 0 auto 120px auto;
+        gap: 40px;
+      }
+      .left {
+        flex: 1;
+        min-height: 500px;
+        background-color: #161925;
+        border: 1px solid #22263f;
+        border-radius: 12px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        display: flex;
+        flex-direction: column;
+        color: #f3f4f6;
+        justify-content: center;
+        align-items: flex-start;
+        font-size: 2rem;
+        font-weight: bold;
+        padding: 50px;
+      }
+      .left p {
+        width: 100%;
+        text-wrap: balance;
+      }
+      .typed-container {
+        color: #ffffff;
+        margin-top: 8px;
+        min-height: 3rem;
+      }
+      .right {
+        width: 35%;
+        max-width: 450px;
+        aspect-ratio: 1 / 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        border-radius: 12px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        border: 1px solid #22263f;
+      }
+      .right img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        image-rendering: -webkit-optimize-contrast;
+      }
+      #extend {
+        margin-top: 16px;
+        font-size: 1.1rem;
+        font-weight: 400;
+        color: #9ca3af;
+      }
+
+      #kartik-name {
+        font-family: inherit;
+        display: inline-block;
+        animation: rgbShift 4s ease-in-out infinite;
+        transition:
+          text-shadow 0.3s ease,
+          color 0.3s ease;
+      }
+      #kartik-name:hover {
+        color: #06b6d4 !important;
+        text-shadow: 0 0 15px rgba(6, 182, 212, 0.6);
+        animation-play-state: paused;
+      }
+
+      @keyframes rgbShift {
+        0%,
+        100% {
+          color: #a78bfa;
+        }
+        50% {
+          color: #22d3ee;
+        }
+      }
+
+      /* Responsive Core Layout Engine */
+      @media (max-width: 1024px) {
+        .first {
+          padding: 20px;
+          gap: 20px;
+        }
+        .left {
+          padding: 30px;
+          font-size: 1.75rem;
+        }
+      }
+
+      @media (max-width: 768px) {
+        nav {
+          padding: 0 20px;
+        }
+        nav ul {
+          display: none; /* Recommended layout extension: build hamburger menu logic here */
+        }
+        .first {
+          flex-direction: column-reverse;
+          height: auto;
+          margin-top: 8vh;
+        }
+        .left,
+        .right {
+          width: 100%;
+          max-width: 100%;
+        }
+        .right {
+          aspect-ratio: 4 / 3;
+        }
+        .left {
+          min-height: auto;
+        }
+      }
+      #element {
+        font-size: 1.5rem;
+        font-weight: 500;
+        color: #5686e4;
+      }
+      .second {
+        max-width: 1400px;
+        margin: 40px auto;
+        padding: 0 40px;
+      }

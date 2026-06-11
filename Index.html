@@ -16,13 +16,18 @@
           system-ui,
           -apple-system,
           sans-serif;
-        background-color: #0d0e15;
+        background-color: #0a0b10;
+        /* Subtle architectural background pattern grid */
+        background-image:
+          linear-gradient(rgba(6, 182, 212, 0.02) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(6, 182, 212, 0.02) 1px, transparent 1px);
+        background-size: 40px 40px;
         color: #f3f4f6;
         overflow-x: hidden;
         line-height: 1.5;
       }
       header {
-        height: 8vh;
+        min-height: 8vh;
       }
       nav {
         display: flex;
@@ -32,19 +37,20 @@
         width: 100%;
         top: 0;
         left: 0;
-        background-color: rgba(13, 14, 21, 0.85);
-        border-bottom: 1px solid #1f2235;
-        height: 8vh;
+        background-color: rgba(10, 11, 16, 0.8);
+        border-bottom: 1px solid #16192b;
+        min-height: 8vh;
         position: fixed;
         z-index: 1000;
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
       }
       nav ul {
         display: flex;
         justify-content: center;
         align-items: center;
         gap: 8px;
+        flex-wrap: wrap;
       }
       nav ul li {
         list-style: none;
@@ -63,14 +69,15 @@
       nav ul li a:focus {
         border-color: #6d28d9;
         color: #06b6d4;
-        background-color: rgba(6, 182, 212, 0.05);
+        background-color: rgba(6, 182, 212, 0.04);
         outline: none;
       }
       .leftnav {
-        font-size: 1.5rem;
+        font-size: 1.4rem;
         font-weight: 700;
         white-space: nowrap;
         color: #06b6d4;
+        letter-spacing: -0.5px;
       }
       .first {
         display: flex;
@@ -79,16 +86,16 @@
         min-height: 92vh;
         padding: 40px;
         max-width: 1400px;
-        margin: 0 auto 120px auto;
+        margin: 0 auto 60px auto;
         gap: 40px;
       }
       .left {
         flex: 1;
         min-height: 500px;
-        background-color: #161925;
-        border: 1px solid #22263f;
-        border-radius: 12px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        background: linear-gradient(135deg, #111322 0%, #141729 100%);
+        border: 1px solid #1e223b;
+        border-radius: 16px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
         display: flex;
         flex-direction: column;
         color: #f3f4f6;
@@ -96,7 +103,18 @@
         align-items: flex-start;
         font-size: 2rem;
         font-weight: bold;
-        padding: 50px;
+        padding: 60px;
+        position: relative;
+        overflow: hidden;
+      }
+      .left::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background: linear-gradient(90deg, #06b6d4, #6d28d9);
       }
       .left p {
         width: 100%;
@@ -104,7 +122,7 @@
       }
       .typed-container {
         color: #ffffff;
-        margin-top: 8px;
+        margin-top: 12px;
         min-height: 3rem;
       }
       .right {
@@ -115,9 +133,10 @@
         justify-content: center;
         align-items: center;
         overflow: hidden;
-        border-radius: 12px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-        border: 1px solid #22263f;
+        border-radius: 16px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+        border: 1px solid #1e223b;
+        position: relative;
       }
       .right img {
         width: 100%;
@@ -143,7 +162,7 @@
       }
       #kartik-name:hover {
         color: #06b6d4 !important;
-        text-shadow: 0 0 15px rgba(6, 182, 212, 0.6);
+        text-shadow: 0 0 20px rgba(6, 182, 212, 0.5);
         animation-play-state: paused;
       }
 
@@ -157,29 +176,328 @@
         }
       }
 
-      /* Responsive Core Layout Engine */
+      #element {
+        font-size: 1.5rem;
+        font-weight: 500;
+        color: #5686e4;
+      }
+
+      /* Section Common Styling */
+      .section-container {
+        max-width: 1400px;
+        margin: 100px auto;
+        padding: 0 40px;
+      }
+      .section-tag {
+        color: #06b6d4;
+        font-family: monospace;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin-bottom: 8px;
+        display: block;
+      }
+      .section-title {
+        font-size: 2.5rem;
+        margin-bottom: 50px;
+        color: #ffffff;
+        letter-spacing: -0.5px;
+      }
+
+      /* Horizontal Work Experience Layout Engine */
+      .experience-flex-container {
+        display: flex;
+        flex-direction: row;
+        align-items: stretch;
+        justify-content: space-between;
+        gap: 0;
+      }
+      .experience-segment {
+        flex: 1;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+      }
+      .experience-card {
+        background: linear-gradient(
+          180deg,
+          rgba(20, 22, 39, 0.6) 0%,
+          rgba(13, 14, 26, 0.8) 100%
+        );
+        border: 1px solid #1f2340;
+        border-radius: 14px;
+        padding: 32px;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+        transition:
+          border-color 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+          transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+          box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+      }
+      .experience-card:hover {
+        border-color: #06b6d4;
+        transform: translateY(-6px);
+        box-shadow: 0 20px 40px rgba(6, 182, 212, 0.08);
+      }
+      .vertical-separator {
+        width: 1px;
+        height: 180px;
+        background: linear-gradient(
+          to bottom,
+          transparent,
+          rgba(34, 38, 67, 0.5),
+          #06b6d4,
+          rgba(34, 38, 67, 0.5),
+          transparent
+        );
+        margin: 0 28px;
+        flex-shrink: 0;
+        opacity: 0.8;
+      }
+      .experience-header {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        margin-bottom: 20px;
+      }
+      .role-title {
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: #ffffff;
+        line-height: 1.3;
+        transition: color 0.3s ease;
+      }
+      .experience-card:hover .role-title {
+        color: #06b6d4;
+      }
+      .company-name {
+        font-size: 0.95rem;
+        color: #9ca3af;
+        font-weight: 500;
+        font-family: monospace;
+      }
+      .job-duration {
+        font-size: 0.8rem;
+        color: #06b6d4;
+        background-color: rgba(6, 182, 212, 0.06);
+        padding: 4px 12px;
+        border-radius: 6px;
+        border: 1px solid rgba(6, 182, 212, 0.15);
+        font-weight: 600;
+        width: max-content;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+      .experience-body ul {
+        padding-left: 18px;
+        color: #9ca3af;
+      }
+      .experience-body ul li {
+        margin-bottom: 12px;
+        font-size: 0.95rem;
+        line-height: 1.5;
+      }
+      .experience-body ul li strong {
+        color: #e5e7eb;
+      }
+
+      /* Premium Projects Matrix Grid Layout */
+      .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 32px;
+      }
+      .project-card {
+        background: linear-gradient(
+          180deg,
+          rgba(20, 22, 39, 0.5) 0%,
+          rgba(11, 12, 22, 0.8) 100%
+        );
+        border: 1px solid #1f2340;
+        border-radius: 14px;
+        overflow: hidden;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        display: flex;
+        flex-direction: column;
+      }
+      .project-card:hover {
+        border-color: #6d28d9;
+        transform: translateY(-4px);
+        box-shadow: 0 20px 40px rgba(109, 40, 217, 0.1);
+      }
+      .project-visual {
+        height: 180px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        font-family: monospace;
+        font-weight: bold;
+        letter-spacing: 1px;
+        font-size: 1.1rem;
+      }
+      /* Modern code block placeholder vectors */
+      .visual-dbms {
+        background: linear-gradient(135deg, #0d1e36 0%, #06b6d4 100%);
+        color: #22d3ee;
+      }
+      .visual-guess {
+        background: linear-gradient(135deg, #1b1233 0%, #6d28d9 100%);
+        color: #c084fc;
+      }
+      .visual-color {
+        background: linear-gradient(135deg, #2c1a1d 0%, #ec4899 100%);
+        color: #f472b6;
+      }
+      .visual-key {
+        background: linear-gradient(135deg, #12251a 0%, #10b981 100%);
+        color: #34d399;
+      }
+
+      .project-content {
+        padding: 24px;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+      }
+      .project-title {
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: #ffffff;
+        margin-bottom: 8px;
+      }
+      .project-desc {
+        color: #9ca3af;
+        font-size: 0.95rem;
+        line-height: 1.5;
+        margin-bottom: 20px;
+        flex: 1;
+      }
+      .project-meta {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        margin-bottom: 24px;
+      }
+      .tech-badge {
+        font-family: monospace;
+        font-size: 0.75rem;
+        background-color: #16192b;
+        color: #a78bfa;
+        padding: 4px 10px;
+        border-radius: 4px;
+        border: 1px solid #222644;
+      }
+      .project-links {
+        display: flex;
+        gap: 12px;
+      }
+      .proj-btn {
+        text-decoration: none;
+        font-size: 0.85rem;
+        font-weight: 600;
+        padding: 10px 18px;
+        border-radius: 6px;
+        transition: all 0.2s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        flex: 1;
+        justify-content: center;
+      }
+      .btn-primary {
+        background-color: #06b6d4;
+        color: #0a0b10;
+      }
+      .btn-primary:hover {
+        background-color: #22d3ee;
+        box-shadow: 0 0 12px rgba(6, 182, 212, 0.4);
+      }
+      .btn-secondary {
+        background-color: transparent;
+        color: #9ca3af;
+        border: 1px solid #222644;
+      }
+      .btn-secondary:hover {
+        color: #ffffff;
+        border-color: #a78bfa;
+        background-color: rgba(167, 139, 250, 0.03);
+      }
+
+      main hr {
+        border: 0;
+        background-color: #16192b;
+        height: 1px;
+        margin: 0 auto;
+        width: 90%;
+      }
+
+      /* Responsive Layout Configurations */
+      @media (max-width: 1100px) {
+        .experience-card {
+          padding: 24px;
+        }
+        .vertical-separator {
+          margin: 0 16px;
+        }
+      }
+
       @media (max-width: 1024px) {
         .first {
           padding: 20px;
           gap: 20px;
         }
         .left {
-          padding: 30px;
+          padding: 40px;
           font-size: 1.75rem;
+        }
+        .projects-grid {
+          gap: 24px;
+        }
+      }
+
+      @media (max-width: 992px) {
+        .experience-flex-container {
+          flex-direction: column;
+          gap: 32px;
+        }
+        .experience-segment {
+          flex-direction: column;
+          width: 100%;
+        }
+        .vertical-separator {
+          width: 60%;
+          height: 1px;
+          background: linear-gradient(90deg, transparent, #06b6d4, transparent);
+          margin: 32px auto 0 auto;
+        }
+        .experience-card {
+          width: 100%;
+        }
+        .projects-grid {
+          grid-template-columns: 1fr;
         }
       }
 
       @media (max-width: 768px) {
         nav {
-          padding: 0 20px;
+          padding: 10px 20px;
+          height: auto;
         }
         nav ul {
-          display: none; /* Recommended layout extension: build hamburger menu logic here */
+          display: none;
         }
         .first {
           flex-direction: column-reverse;
           height: auto;
-          margin-top: 8vh;
+          margin-top: 10vh;
+          padding: 20px 16px;
         }
         .left,
         .right {
@@ -191,17 +509,19 @@
         }
         .left {
           min-height: auto;
+          padding: 40px 24px;
         }
-      }
-      #element {
-        font-size: 1.5rem;
-        font-weight: 500;
-        color: #5686e4;
-      }
-      .second {
-        max-width: 1400px;
-        margin: 40px auto;
-        padding: 0 40px;
+        .section-container {
+          padding: 0 20px;
+          margin: 60px auto;
+        }
+        .section-title {
+          font-size: 2rem;
+          margin-bottom: 32px;
+        }
+        .project-links {
+          flex-direction: column;
+        }
       }
     </style>
   </head>
@@ -236,7 +556,7 @@
         </div>
         <div class="right">
           <img
-            src="/images/OIP (2).png"
+            src="/images/OIP%20(2).png"
             sizes="(max-width: 768px) 90vw, 35vw"
             alt="Kartik Portfolio Hero Image"
             loading="eager"
@@ -244,28 +564,256 @@
           />
         </div>
       </section>
+
       <hr />
-      <section class="second" id="about">
-        <p>What I have done so far</p>
-        <h1>Work Experience</h1>
-        <p></p>
+
+      <section class="section-container" id="about">
+        <span class="section-tag">// Professional Track</span>
+        <h1 class="section-title">Work Experience</h1>
+
+        <div class="experience-flex-container">
+          <div class="experience-segment">
+            <div class="experience-card">
+              <div class="experience-header">
+                <span class="job-duration">Core Track</span>
+                <div class="role-title">Full-Stack Architecture</div>
+                <div class="company-name">MERN Ecosystem</div>
+              </div>
+              <div class="experience-body">
+                <ul>
+                  <li>
+                    Architecting application state pipelines deploying
+                    responsive layout layers built cleanly on top of the
+                    <strong>MERN stack</strong>.
+                  </li>
+                  <li>
+                    Managing asynchronous rendering workflows to maximize
+                    rendering processing speed.
+                  </li>
+                  <li>
+                    Securing structural route configurations against middle-tier
+                    exploit vectors.
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="vertical-separator"></div>
+          </div>
+
+          <div class="experience-segment">
+            <div class="experience-card">
+              <div class="experience-header">
+                <span class="job-duration">Backend Specialization</span>
+                <div class="role-title">Relational Infrastructure</div>
+                <div class="company-name">Oracle SQL Platform</div>
+              </div>
+              <div class="experience-body">
+                <ul>
+                  <li>
+                    Designing precise transactional system schemas mapping clean
+                    <strong>Oracle SQL</strong> logic modules.
+                  </li>
+                  <li>
+                    Evaluating system dependencies to implement strict database
+                    design normalization parameters.
+                  </li>
+                  <li>
+                    Writing highly optimized data access statements leveraging
+                    index pathways and performance joins.
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="vertical-separator"></div>
+          </div>
+
+          <div class="experience-segment">
+            <div class="experience-card">
+              <div class="experience-header">
+                <span class="job-duration">Foundations</span>
+                <div class="role-title">Systems & Core Logic</div>
+                <div class="company-name">C++ / Java Runtime</div>
+              </div>
+              <div class="experience-body">
+                <ul>
+                  <li>
+                    Developing underlying algorithmic problem solutions
+                    implementing optimized memory-safe execution layers.
+                  </li>
+                  <li>
+                    Mapping computational processing paths down to strict Big-O
+                    runtime complexity metrics.
+                  </li>
+                  <li>
+                    Handling input scale boundaries to safeguard runtime
+                    application execution flow.
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <hr />
+
+      <section class="section-container" id="projects">
+        <span class="section-tag">// Technical Deployments</span>
+        <h1 class="section-title">Featured Projects</h1>
+
+        <div class="projects-grid">
+          <div class="project-card">
+            <div class="project-visual visual-dbms">
+              &lt;DATABASE_RDBMS /&gt;
+            </div>
+            <div class="project-content">
+              <div class="project-title">BPIT University DBMS</div>
+              <div class="project-desc">
+                A comprehensive relational management engine built to model
+                academic operational environments. Focuses heavily on schema
+                relational modeling, query optimization, and transaction
+                mapping.
+              </div>
+              <div class="project-meta">
+                <span class="tech-badge">SQL</span>
+                <span class="tech-badge">Relational Schema</span>
+                <span class="tech-badge">Database Design</span>
+              </div>
+              <div class="project-links">
+                <a
+                  href="https://itskartik12.github.io/BPIT-University-DBMS/"
+                  target="_blank"
+                  class="proj-btn btn-primary"
+                  >Live Preview</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <div class="project-visual visual-guess">
+              &lt;STATE_LOGIC_ENGINE /&gt;
+            </div>
+            <div class="project-content">
+              <div class="project-title">Number Guessing Engine</div>
+              <div class="project-desc">
+                An interactive mathematical logic game utilizing clean
+                JavaScript control flows. Focuses on robust low-level event
+                handling loops, structural bounds evaluation, and programmatic
+                layout updates.
+              </div>
+              <div class="project-meta">
+                <span class="tech-badge">JavaScript (ES6+)</span>
+                <span class="tech-badge">DOM Manipulation</span>
+                <span class="tech-badge">Event Cycles</span>
+              </div>
+              <div class="project-links">
+                <a
+                  href="https://itskartik12.github.io/JavaScript-Repository/06_Projects/04_Guess_Number/"
+                  target="_blank"
+                  class="proj-btn btn-primary"
+                  >Live Preview</a
+                >
+                <a
+                  href="https://github.com/ItsKartik12/JavaScript-Repository/tree/main/06_Projects/04_Guess_Number"
+                  target="_blank"
+                  class="proj-btn btn-secondary"
+                  >Source Code</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <div class="project-visual visual-color">
+              &lt;ASYNC_RENDERING_ENGINE /&gt;
+            </div>
+            <div class="project-content">
+              <div class="project-title">Unlimited Color Switcher</div>
+              <div class="project-desc">
+                A high-performance dynamic style rendering tool. Uses
+                asynchronous interval triggers to cycle execution scopes across
+                hexadecimal color evaluation algorithms cleanly without memory
+                leaks.
+              </div>
+              <div class="project-meta">
+                <span class="tech-badge">JavaScript</span>
+                <span class="tech-badge">Async Timers</span>
+                <span class="tech-badge">Dynamic CSS</span>
+              </div>
+              <div class="project-links">
+                <a
+                  href="https://itskartik12.github.io/JavaScript-Repository/06_Projects/06_Unlimited_Color/"
+                  target="_blank"
+                  class="proj-btn btn-primary"
+                  >Live Preview</a
+                >
+                <a
+                  href="https://github.com/ItsKartik12/JavaScript-Repository/tree/main/06_Projects/06_Unlimited_Color"
+                  target="_blank"
+                  class="proj-btn btn-secondary"
+                  >Source Code</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <div class="project-visual visual-key">
+              &lt;EVENT_CAPTURE_MODULE /&gt;
+            </div>
+            <div class="project-content">
+              <div class="project-title">Keyboard Capture Dashboard</div>
+              <div class="project-desc">
+                A technical event interceptor that captures user keystroke
+                vectors in real-time, mapping dynamic metadata such as keyCode
+                configurations directly into the visible document tree.
+              </div>
+              <div class="project-meta">
+                <span class="tech-badge">Vanilla JS</span>
+                <span class="tech-badge">Hardware Events</span>
+                <span class="tech-badge">UI Injection</span>
+              </div>
+              <div class="project-links">
+                <a
+                  href="https://itskartik12.github.io/JavaScript-Repository/06_Projects/05_Keyboard/"
+                  target="_blank"
+                  class="proj-btn btn-primary"
+                  >Live Preview</a
+                >
+                <a
+                  href="https://github.com/ItsKartik12/JavaScript-Repository/tree/main/06_Projects/05_Keyboard"
+                  target="_blank"
+                  class="proj-btn btn-secondary"
+                  >Source Code</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
     </main>
 
     <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
     <script>
       document.addEventListener("DOMContentLoaded", () => {
-        const typed = new Typed("#element", {
-          strings: [
-            "Web Developer",
-            "Full-Stack Engineer",
-            "Tech Enthusiast 🚀",
-          ],
-          loop: true,
-          typeSpeed: 50,
-          backSpeed: 30,
-          backDelay: 1500,
-        });
+        if (typeof Typed !== "undefined") {
+          const typed = new Typed("#element", {
+            strings: [
+              "Web Developer",
+              "Full-Stack Engineer",
+              "Tech Enthusiast 🚀",
+            ],
+            loop: true,
+            typeSpeed: 50,
+            backSpeed: 30,
+            backDelay: 1500,
+          });
+        } else {
+          console.error("Typed.js library failed to load cleanly.");
+          document.getElementById("element").textContent =
+            "Full-Stack Engineer";
+        }
       });
     </script>
   </body>
