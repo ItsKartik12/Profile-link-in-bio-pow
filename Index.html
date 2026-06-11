@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Kartik - Developer Portfolio</title>
+    <!-- Linking our external stylesheet -->
     <link rel="stylesheet" href="Style.css" />
   </head>
   <body>
@@ -21,20 +22,19 @@
         </div>
       </nav>
     </header>
+
     <main>
+      <!-- Hero Section -->
       <section class="first" id="home">
         <div class="left">
-          <p>
-            Hi, My name is
-            <span style="font-weight: bold; font-size: 2.5rem" id="kartik-name"
-              >Kartik</span
-            >
-          </p>
+          <p>Hi, My name is</p>
           <div class="typed-container">
-            I am a <span id="element" style="color: #06b6d4"></span>
+            <span id="kartik-name">Kartik.</span> <br />
+            <span id="element" class="dynamic-text"></span>
           </div>
           <div id="extend">Building optimized full-stack systems.</div>
 
+          <!-- Professional Glassmorphism Action Buttons -->
           <div class="profile-actions">
             <a
               href="Images/Kartik_Goyal_Resume.pdf"
@@ -58,14 +58,14 @@
             sizes="(max-width: 768px) 90vw, 35vw"
             alt="Kartik Portfolio Hero Image"
             loading="eager"
-            disabled-decoding="async"
           />
         </div>
       </section>
 
       <hr />
 
-      <section class="second" id="about">
+      <!-- Horizontal Work Experience Timeline -->
+      <section id="about">
         <span class="section-tag">// Chronology</span>
         <h1 class="section-title">Work Experience</h1>
 
@@ -87,10 +87,6 @@
                   Managing asynchronous rendering workflows to maximize
                   rendering processing speed.
                 </li>
-                <li>
-                  Securing structural route configurations against middle-tier
-                  exploit vectors.
-                </li>
               </ul>
             </div>
             <div class="vertical-divider"></div>
@@ -109,12 +105,8 @@
                   <strong>Oracle SQL</strong> logic modules.
                 </li>
                 <li>
-                  Evaluating system dependencies to implement strict database
-                  design normalization parameters.
-                </li>
-                <li>
-                  Writing highly optimized data access statements leveraging
-                  index pathways and performance joins.
+                  Evaluating system dependencies to implement database design
+                  normalization parameters.
                 </li>
               </ul>
             </div>
@@ -137,10 +129,6 @@
                   Mapping computational processing paths down to strict Big-O
                   runtime complexity metrics.
                 </li>
-                <li>
-                  Handling input scale boundaries to safeguard runtime
-                  application execution flow.
-                </li>
               </ul>
             </div>
           </div>
@@ -149,117 +137,130 @@
 
       <hr />
 
-      <section class="second" id="projects">
-        <span class="section-tag">// Deployments</span>
+      <!-- Featured Projects Section -->
+      <section class="section-container" id="projects">
+        <span class="section-tag">// Technical Deployments</span>
         <h1 class="section-title">Featured Projects</h1>
 
-        <div class="projects-matrix">
-          <div class="project-node">
-            <div class="project-banner banner-dbms">
+        <div class="projects-grid">
+          <div class="project-card">
+            <div class="project-visual visual-dbms">
               &lt;DATABASE_RDBMS /&gt;
             </div>
-            <div class="project-body">
-              <div class="project-name">BPIT University DBMS</div>
-              <div class="project-summary">
+            <div class="project-content">
+              <div class="project-title">BPIT University DBMS</div>
+              <div class="project-desc">
                 A comprehensive relational management engine built to model
                 academic operational environments. Focuses heavily on schema
-                relational modeling, query optimization, and transaction
-                mapping.
+                relational modeling.
               </div>
-              <div class="project-badges">
-                <span class="meta-tag">SQL</span>
-                <span class="meta-tag">Relational Schema</span>
-                <span class="meta-tag">Database Design</span>
+              <div class="project-meta">
+                <span class="tech-badge">SQL</span>
+                <span class="tech-badge">Relational Schema</span>
+                <span class="tech-badge">Database Design</span>
               </div>
-              <div class="project-actions">
+              <div class="project-links">
                 <a
                   href="https://itskartik12.github.io/BPIT-University-DBMS/"
                   target="_blank"
-                  class="action-link action-primary"
+                  class="proj-btn btn-primary"
                   >Live Preview</a
                 >
               </div>
             </div>
           </div>
 
-          <div class="project-node">
-            <div class="project-banner banner-guess">
+          <div class="project-card">
+            <div class="project-visual visual-guess">
               &lt;STATE_LOGIC_ENGINE /&gt;
             </div>
-            <div class="project-body">
-              <div class="project-name">Number Guessing Engine</div>
-              <div class="project-summary">
+            <div class="project-content">
+              <div class="project-title">Number Guessing Engine</div>
+              <div class="project-desc">
                 An interactive mathematical logic game utilizing clean
-                JavaScript control flows. Focuses on robust low-level event
-                handling loops, structural bounds evaluation, and programmatic
-                layout updates.
+                JavaScript control flows and robust event loops.
               </div>
-              <div class="project-badges">
-                <span class="meta-tag">JavaScript (ES6+)</span>
-                <span class="meta-tag">DOM Manipulation</span>
-                <span class="meta-tag">Event Cycles</span>
+              <div class="project-meta">
+                <span class="tech-badge">JavaScript (ES6+)</span>
+                <span class="tech-badge">DOM Manipulation</span>
+                <span class="tech-badge">Event Cycles</span>
               </div>
-              <div class="project-actions">
+              <div class="project-links">
                 <a
-                  href="./Projects/04_Guess_Number/01_Index.html"
+                  href="https://itskartik12.github.io/JavaScript-Repository/06_Projects/04_Guess_Number/"
                   target="_blank"
-                  class="action-link action-primary"
+                  class="proj-btn btn-primary"
                   >Live Preview</a
+                >
+                <a
+                  href="https://github.com/ItsKartik12/JavaScript-Repository/tree/main/06_Projects/04_Guess_Number"
+                  target="_blank"
+                  class="proj-btn btn-secondary"
+                  >Source Code</a
                 >
               </div>
             </div>
           </div>
 
-          <div class="project-node">
-            <div class="project-banner banner-color">
+          <div class="project-card">
+            <div class="project-visual visual-color">
               &lt;ASYNC_RENDERING_ENGINE /&gt;
             </div>
-            <div class="project-body">
-              <div class="project-name">Unlimited Color Switcher</div>
-              <div class="project-summary">
-                A high-performance dynamic style rendering tool. Uses
-                asynchronous interval triggers to cycle execution scopes across
-                hexadecimal color evaluation algorithms cleanly without memory
-                leaks.
+            <div class="project-content">
+              <div class="project-title">Unlimited Color Switcher</div>
+              <div class="project-desc">
+                Uses asynchronous interval triggers to cycle execution scopes
+                across color evaluation algorithms cleanly.
               </div>
-              <div class="project-badges">
-                <span class="meta-tag">JavaScript</span>
-                <span class="meta-tag">Async Timers</span>
-                <span class="meta-tag">Dynamic CSS</span>
+              <div class="project-meta">
+                <span class="tech-badge">JavaScript</span>
+                <span class="tech-badge">Async Timers</span>
+                <span class="tech-badge">Dynamic CSS</span>
               </div>
-              <div class="project-actions">
+              <div class="project-links">
                 <a
-                  href="./Projects/06_Unlimited_Color/01_Index.html"
+                  href="https://itskartik12.github.io/JavaScript-Repository/06_Projects/06_Unlimited_Color/"
                   target="_blank"
-                  class="action-link action-primary"
+                  class="proj-btn btn-primary"
                   >Live Preview</a
+                >
+                <a
+                  href="https://github.com/ItsKartik12/JavaScript-Repository/tree/main/06_Projects/06_Unlimited_Color"
+                  target="_blank"
+                  class="proj-btn btn-secondary"
+                  >Source Code</a
                 >
               </div>
             </div>
           </div>
 
-          <div class="project-node">
-            <div class="project-banner banner-key">
+          <div class="project-card">
+            <div class="project-visual visual-key">
               &lt;EVENT_CAPTURE_MODULE /&gt;
             </div>
-            <div class="project-body">
-              <div class="project-name">Keyboard Capture Dashboard</div>
-              <div class="project-summary">
+            <div class="project-content">
+              <div class="project-title">Keyboard Capture Dashboard</div>
+              <div class="project-desc">
                 A technical event interceptor that captures user keystroke
-                vectors in real-time, mapping dynamic metadata such as keyCode
-                configurations directly into the visible document tree.
+                vectors in real-time, mapping dynamic metadata.
               </div>
-              <div class="project-badges">
-                <span class="meta-tag">Vanilla JS</span>
-                <span class="meta-tag">Hardware Events</span>
-                <span class="meta-tag">UI Injection</span>
+              <div class="project-meta">
+                <span class="tech-badge">Vanilla JS</span>
+                <span class="tech-badge">Hardware Events</span>
+                <span class="tech-badge">UI Injection</span>
               </div>
-              <div class="project-actions">
+              <div class="project-links">
                 <a
-                  href="./Projects/05_Keyboard/01_Index.html"
+                  href="https://itskartik12.github.io/JavaScript-Repository/06_Projects/05_Keyboard/"
                   target="_blank"
-                  class="action-link action-primary"
+                  class="proj-btn btn-primary"
                   >Live Preview</a
+                >
+                <a
+                  href="https://github.com/ItsKartik12/JavaScript-Repository/tree/main/06_Projects/05_Keyboard"
+                  target="_blank"
+                  class="proj-btn btn-secondary"
+                  >Source Code</a
                 >
               </div>
             </div>
@@ -269,6 +270,7 @@
 
       <hr />
 
+      <!-- Services Section -->
       <section class="second" id="services">
         <span class="section-tag">// Capabilities</span>
         <h1 class="section-title">Services I Offer</h1>
@@ -289,8 +291,7 @@
             <div class="service-title">API Design & Integration</div>
             <div class="service-description">
               Architecting secure, asynchronous, and robust middle-tier
-              endpoints. Structuring structural routes protected cleanly against
-              common enterprise exploit vectors.
+              endpoints protected against enterprise exploit vectors.
             </div>
           </div>
 
@@ -299,14 +300,14 @@
             <div class="service-title">Database Engineering</div>
             <div class="service-description">
               Designing precise relational schemas, normalized modeling
-              structures, and writing highly optimized Oracle SQL/MySQL queries
-              utilizing deep analytical index pathways.
+              structures, and writing highly optimized Oracle SQL/MySQL queries.
             </div>
           </div>
         </div>
       </section>
     </main>
 
+    <!-- Footer & Contact Form Section -->
     <footer id="contact">
       <div class="footer-container">
         <div class="contact-info">
@@ -320,7 +321,6 @@
             <span class="label">Email</span>
             <span class="value">kg0192421@gmail.com</span>
           </a>
-
           <a
             href="https://github.com/ItsKartik12"
             target="_blank"
@@ -329,7 +329,6 @@
             <span class="label">GitHub</span>
             <span class="value">github.com/ItsKartik12</span>
           </a>
-
           <a
             href="https://www.linkedin.com/in/kartik-goyal-7058a1358/"
             target="_blank"
@@ -362,7 +361,7 @@
       </div>
 
       <div class="footer-bottom">
-        <div>&copy; 2026 Kartik Goyal. All rights structural engineered.</div>
+        <div>&copy; 2026 Kartik Goyal. All rights structurally engineered.</div>
         <div class="footer-bottom-links">
           <a href="#home">Home</a>
           <a href="#about">About</a>
@@ -372,22 +371,27 @@
       </div>
     </footer>
 
+    <!-- Text Typing Library Injection Scripts -->
     <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
     <script>
       document.addEventListener("DOMContentLoaded", () => {
-        const typed = new Typed("#element", {
-          strings: [
-            "Web Developer",
-            "Full-Stack Engineer",
-            "Tech Enthusiast 🚀",
-          ],
-          loop: true,
-          typeSpeed: 50,
-          backSpeed: 30,
-          backDelay: 1500,
-        });
+        if (typeof Typed !== "undefined") {
+          new Typed("#element", {
+            strings: [
+              "Web Developer.",
+              "Full-Stack Engineer.",
+              "Tech Enthusiast. 🚀",
+            ],
+            loop: true,
+            typeSpeed: 50,
+            backSpeed: 30,
+            backDelay: 1500,
+          });
+        } else {
+          document.getElementById("element").textContent =
+            "Full-Stack Engineer";
+        }
       });
     </script>
-    <script src="Script.js"></script>
   </body>
 </html>
