@@ -1,17 +1,22 @@
 /* --- 1. Global Variables & Reset Layer --- */
 :root {
-  --bg-main: #0a0b10;
-  --bg-card: #121420;
-  --bg-card-glass: rgba(18, 20, 32, 0.7);
-  --border-color: #1e2238;
-  --border-glow: rgba(6, 182, 212, 0.15);
+  --bg-main: #06070b;
+  --bg-card: #0b0d19;
+  --bg-card-glass: rgba(11, 13, 25, 0.6);
+  --border-color: #1a1e36;
+  --border-glow: rgba(6, 182, 212, 0.2);
+  
+  /* Cyberpunk Palette Accents */
   --accent-cyan: #06b6d4;
   --accent-cyan-glow: rgba(6, 182, 212, 0.4);
   --accent-purple: #a78bfa;
+  --accent-purple-glow: rgba(167, 139, 250, 0.3);
+  
   --text-primary: #f3f4f6;
-  --text-secondary: #9ca3af;
-  --text-muted: #6b7280;
-  --transition-smooth: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  --text-secondary: #a0aec0;
+  --text-muted: #4a5568;
+  
+  --transition-cubic: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 * {
@@ -24,33 +29,49 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Premium Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-main);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-cyan);
+  box-shadow: 0 0 10px var(--accent-cyan-glow);
+}
+
 body {
   background-color: var(--bg-main);
+  /* Interactive Matrix Grid Pattern */
   background-image:
-    linear-gradient(rgba(6, 182, 212, 0.02) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(6, 182, 212, 0.02) 1px, transparent 1px);
-  background-size: 50px 50px;
+    linear-gradient(rgba(6, 182, 212, 0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(6, 182, 212, 0.015) 1px, transparent 1px);
+  background-size: 40px 40px;
   color: var(--text-primary);
   font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
   line-height: 1.6;
   overflow-x: hidden;
 }
 
-/* Accessibility Focus Ring Styles */
 *:focus-visible {
   outline: 2px dashed var(--accent-cyan);
   outline-offset: 4px;
 }
 
-/* --- 2. Fixed Glassmorphic Header Navigation --- */
+/* --- 2. Fixed Glassmorphic Navigation --- */
 header {
   position: fixed;
   top: 0;
   width: 100%;
-  background: rgba(10, 11, 16, 0.75);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid rgba(30, 34, 56, 0.6);
+  background: rgba(6, 7, 11, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(26, 30, 54, 0.5);
   z-index: 1000;
 }
 
@@ -60,21 +81,27 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 18px 20px;
+  padding: 20px;
 }
 
-.leftnav {
+.leftnav a {
   font-weight: 800;
-  font-size: 1.25rem;
+  font-size: 1.3rem;
   letter-spacing: -0.5px;
-  background: linear-gradient(135deg, var(--text-primary) 30%, var(--accent-cyan));
+  text-decoration: none;
+  background: linear-gradient(135deg, var(--text-primary) 40%, var(--accent-cyan));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  transition: var(--transition-cubic);
+}
+
+.leftnav a:hover {
+  filter: drop-shadow(0 0 8px var(--accent-cyan-glow));
 }
 
 .rightnav ul {
   display: flex;
-  gap: 28px;
+  gap: 32px;
   list-style: none;
 }
 
@@ -84,25 +111,27 @@ nav {
   font-size: 0.95rem;
   font-weight: 500;
   position: relative;
-  padding: 4px 0;
-  transition: var(--transition-smooth);
+  padding: 6px 0;
+  transition: var(--transition-cubic);
 }
 
-/* Elegant Animated Underline Hook */
+/* Glowing Slide-In Underline Hook */
 .rightnav a::after {
   content: '';
   position: absolute;
   bottom: 0;
-  left: 0;
+  left: 50%;
   width: 0;
   height: 2px;
   background: var(--accent-cyan);
-  box-shadow: 0 0 8px var(--accent-cyan);
-  transition: var(--transition-smooth);
+  box-shadow: 0 0 10px var(--accent-cyan), 0 0 20px var(--accent-cyan);
+  transition: var(--transition-cubic);
+  transform: translateX(-50%);
 }
 
 .rightnav a:hover {
   color: var(--text-primary);
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
 }
 
 .rightnav a:hover::after {
@@ -112,23 +141,23 @@ nav {
 main {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 140px 20px 60px 20px;
+  padding: 160px 20px 60px 20px;
 }
 
 hr {
   border: 0;
   height: 1px;
-  background: linear-gradient(90deg, transparent, var(--border-color), transparent);
+  background: linear-gradient(90deg, transparent, var(--border-color) 20%, var(--border-color) 80%, transparent);
   margin: 80px 0;
 }
 
-/* --- 3. Hero Section & Cyberpunk Glow Actions --- */
+/* --- 3. Hero Layout & Ambient Lights --- */
 .first {
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 60px;
-  min-height: 65vh;
+  min-height: 60vh;
 }
 
 .left {
@@ -136,80 +165,83 @@ hr {
 }
 
 .left p.greeting {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   font-family: monospace;
   color: var(--accent-cyan);
-  margin-bottom: 12px;
-  letter-spacing: 1px;
+  letter-spacing: 2px;
+  margin-bottom: 16px;
+  text-transform: uppercase;
 }
 
 .typed-container {
-  font-size: 3.5rem;
+  font-size: 3.8rem;
   font-weight: 800;
   letter-spacing: -1.5px;
   line-height: 1.1;
-  margin-bottom: 16px;
-}
-
-#kartik-name {
-  color: var(--text-primary);
+  margin-bottom: 20px;
 }
 
 .dynamic-text {
   color: var(--accent-cyan);
-  text-shadow: 0 0 20px rgba(6, 182, 212, 0.3);
+  text-shadow: 0 0 25px rgba(6, 182, 212, 0.45);
 }
 
 #extend {
   font-size: 1.25rem;
   color: var(--text-secondary);
   margin-bottom: 40px;
-  max-width: 520px;
+  max-width: 540px;
+  border-left: 2px solid var(--border-color);
+  padding-left: 16px;
 }
 
-/* Professional Interactive Buttons */
+/* Cyberpunk Button Core */
 .profile-actions {
   display: flex;
-  gap: 16px;
+  gap: 20px;
 }
 
 .action-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 14px 32px;
+  padding: 16px 36px;
   border-radius: 8px;
   font-size: 0.95rem;
   font-weight: 600;
   text-decoration: none;
-  transition: var(--transition-smooth);
+  position: relative;
+  overflow: hidden;
+  transition: var(--transition-cubic);
   cursor: pointer;
 }
 
 .btn-main {
   background: var(--accent-cyan);
   color: var(--bg-main) !important;
-  box-shadow: 0 4px 20px var(--accent-cyan-glow);
+  box-shadow: 0 4px 25px var(--accent-cyan-glow);
 }
 
 .btn-main:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 28px rgba(6, 182, 212, 0.5);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 35px rgba(6, 182, 212, 0.6);
+  background: #22d3ee;
 }
 
 .btn-alt {
-  background: rgba(255, 255, 255, 0.02);
+  background: rgba(255, 255, 255, 0.01);
   color: var(--text-primary) !important;
   border: 1px solid var(--border-color);
 }
 
 .btn-alt:hover {
-  background: rgba(6, 182, 212, 0.05);
+  background: rgba(6, 182, 212, 0.04);
   border-color: var(--accent-cyan);
-  box-shadow: 0 0 15px rgba(6, 182, 212, 0.1);
-  transform: translateY(-3px);
+  box-shadow: 0 0 20px rgba(6, 182, 212, 0.15);
+  transform: translateY(-4px);
 }
 
+/* Ambient Radial Blur Vector behind Illustration */
 .right {
   flex: 0.8;
   display: flex;
@@ -217,57 +249,57 @@ hr {
   position: relative;
 }
 
-/* Soft Neon Backdrop Radial Blend */
 .right::before {
   content: '';
   position: absolute;
-  width: 300px;
-  height: 300px;
-  background: radial-gradient(var(--accent-cyan-glow), transparent 70%);
+  width: 350px;
+  height: 350px;
+  background: radial-gradient(var(--accent-cyan-glow), transparent 65%);
   z-index: -1;
-  filter: blur(20px);
-  animation: pulse-ambient 8s infinite alternate;
+  filter: blur(30px);
+  animation: ambientPulse 10s infinite alternate ease-in-out;
 }
 
 .right img {
   max-width: 100%;
   height: auto;
-  max-height: 380px;
-  filter: drop-shadow(0 10px 25px rgba(0, 0, 0, 0.5));
-  animation: float-illustration 5s ease-in-out infinite;
+  max-height: 400px;
+  filter: drop-shadow(0 20px 50px rgba(0, 0, 0, 0.6));
+  animation: dynamicFloat 6s ease-in-out infinite;
 }
 
-/* --- 4. Content Typography Foundations --- */
+/* --- 4. Section Headers Syntax --- */
 .section-tag {
   font-family: monospace;
-  color: var(--accent-cyan);
+  color: var(--accent-purple);
   font-size: 0.9rem;
   display: block;
-  margin-bottom: 8px;
-  letter-spacing: 1px;
+  margin-bottom: 10px;
+  letter-spacing: 2px;
+  text-shadow: 0 0 10px var(--accent-purple-glow);
 }
 
 .section-title {
-  font-size: 2.25rem;
+  font-size: 2.5rem;
   font-weight: 800;
   letter-spacing: -0.5px;
-  margin-bottom: 45px;
-  background: linear-gradient(90deg, var(--text-primary), var(--text-secondary));
+  margin-bottom: 50px;
+  background: linear-gradient(90deg, var(--text-primary) 60%, var(--text-secondary));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-/* --- 5. Glassmorphic Track Layer --- */
+/* --- 5. Modular Glassmorphic Timeline Tracker --- */
 .experience-row-layout {
   display: flex;
   align-items: stretch;
   width: 100%;
   background: var(--bg-card-glass);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border: 1px solid var(--border-color);
-  border-radius: 16px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  border-radius: 20px;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
   overflow: hidden;
 }
 
@@ -275,22 +307,18 @@ hr {
   display: flex;
   flex: 1;
   position: relative;
-  transition: var(--transition-smooth);
+  transition: var(--transition-cubic);
 }
 
 .experience-node:hover {
-  background: rgba(255, 255, 255, 0.015);
+  background: rgba(255, 255, 255, 0.02);
 }
 
 .experience-card {
-  padding: 40px;
+  padding: 45px;
   width: 100%;
   display: flex;
   flex-direction: column;
-}
-
-.exp-header {
-  margin-bottom: 24px;
 }
 
 .exp-badge {
@@ -299,19 +327,24 @@ hr {
   font-size: 0.75rem;
   text-transform: uppercase;
   color: var(--accent-cyan);
-  background: rgba(6, 182, 212, 0.08);
-  border: 1px solid rgba(6, 182, 212, 0.15);
+  background: rgba(6, 182, 212, 0.06);
+  border: 1px solid rgba(6, 182, 212, 0.2);
   padding: 4px 12px;
   border-radius: 4px;
-  margin-bottom: 14px;
-  font-weight: 600;
-  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+  font-weight: 700;
+  letter-spacing: 1px;
 }
 
 .exp-role {
-  font-size: 1.35rem;
+  font-size: 1.4rem;
   font-weight: 700;
   color: var(--text-primary);
+  transition: var(--transition-cubic);
+}
+
+.experience-node:hover .exp-role {
+  color: var(--accent-cyan);
 }
 
 .exp-company {
@@ -324,132 +357,158 @@ hr {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 16px;
+  margin-top: 24px;
 }
 
 .exp-details li {
   font-size: 0.9rem;
   color: var(--text-secondary);
   position: relative;
-  padding-left: 20px;
-  line-height: 1.5;
+  padding-left: 22px;
+  line-height: 1.6;
 }
 
 .exp-details li::before {
-  content: "▹";
+  content: "»";
   color: var(--accent-cyan);
   position: absolute;
   left: 0;
   font-weight: bold;
+  transition: var(--transition-cubic);
+}
+
+.experience-node:hover .exp-details li::before {
+  transform: translateX(4px);
   text-shadow: 0 0 8px var(--accent-cyan);
 }
 
 .vertical-divider {
   width: 1px;
-  background: linear-gradient(
-    to bottom,
-    transparent,
-    var(--border-color) 20%,
-    var(--border-color) 80%,
-    transparent
-  );
+  background: linear-gradient(to bottom, transparent, var(--border-color) 20%, var(--border-color) 80%, transparent);
   align-self: stretch;
 }
 
-/* --- 6. Hover-Reactive Interactive Project Matrix --- */
+/* --- 6. Cybernetic Hover-Reactive Project Matrix --- */
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 28px;
+  gap: 32px;
 }
 
 .project-card {
   background: var(--bg-card);
   border: 1px solid var(--border-color);
-  border-radius: 14px;
+  border-radius: 16px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  transition: var(--transition-smooth);
+  transition: var(--transition-cubic);
+  position: relative;
+}
+
+/* Corner Bracket Accents on Hover */
+.project-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 1px solid transparent;
+  border-radius: 16px;
+  transition: var(--transition-cubic);
+  pointer-events: none;
 }
 
 .project-card:hover {
-  transform: translateY(-6px);
-  border-color: rgba(6, 182, 212, 0.3);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4), 0 0 20px rgba(6, 182, 212, 0.05);
+  transform: translateY(-8px);
+  border-color: rgba(6, 182, 212, 0.4);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 30px rgba(6, 182, 212, 0.05);
 }
 
 .project-visual {
-  background: #08090f;
-  padding: 35px 20px;
+  background: #040508;
+  padding: 40px 20px;
   text-align: center;
   font-family: monospace;
   font-weight: 700;
   font-size: 0.9rem;
-  letter-spacing: 1.5px;
+  letter-spacing: 2px;
   border-bottom: 1px solid var(--border-color);
   position: relative;
   overflow: hidden;
 }
 
-/* Linear Scanning Accent effect */
+/* Diagnostic Scanner Overhaul Effect */
 .project-visual::after {
   content: '';
   position: absolute;
-  top: 0;
-  left: -100%;
-  width: 50%;
+  top: -100%;
+  left: 0;
+  width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.03), transparent);
-  transform: skewX(-25deg);
-  transition: 0.75s;
+  background: linear-gradient(to bottom, transparent, rgba(6, 182, 212, 0.05), transparent);
+  transition: none;
 }
 
 .project-card:hover .project-visual::after {
-  left: 150%;
+  top: 100%;
+  transition: all 1.2s cubic-bezier(0.2, 0.6, 0.4, 1);
 }
 
-.visual-dbms { color: #38bdf8; text-shadow: 0 0 12px rgba(56, 189, 248, 0.2); }
-.visual-guess { color: #34d399; text-shadow: 0 0 12px rgba(52, 211, 153, 0.2); }
-.visual-color { color: #fbbf24; text-shadow: 0 0 12px rgba(251, 191, 36, 0.2); }
-.visual-key { color: #a78bfa; text-shadow: 0 0 12px rgba(167, 139, 250, 0.2); }
+.visual-dbms { color: #38bdf8; text-shadow: 0 0 15px rgba(56, 189, 248, 0.25); }
+.visual-guess { color: #34d399; text-shadow: 0 0 15px rgba(52, 211, 153, 0.25); }
+.visual-color { color: #fbbf24; text-shadow: 0 0 15px rgba(251, 191, 36, 0.25); }
+.visual-key { color: #a78bfa; text-shadow: 0 0 15px rgba(167, 139, 250, 0.25); }
 
 .project-content {
-  padding: 26px;
+  padding: 30px;
   display: flex;
   flex-direction: column;
   flex: 1;
 }
 
 .project-title {
-  font-size: 1.2rem;
+  font-size: 1.25rem;
   font-weight: 700;
   margin-bottom: 12px;
+  transition: var(--transition-cubic);
+}
+
+.project-card:hover .project-title {
+  color: var(--accent-cyan);
 }
 
 .project-desc {
   font-size: 0.9rem;
   color: var(--text-secondary);
-  margin-bottom: 24px;
+  margin-bottom: 28px;
   flex: 1;
-  line-height: 1.5;
+  line-height: 1.6;
 }
 
 .project-meta {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  margin-bottom: 24px;
+  margin-bottom: 26px;
 }
 
 .tech-badge {
   font-family: monospace;
   font-size: 0.75rem;
-  background: rgba(255, 255, 255, 0.02);
+  background: rgba(255, 255, 255, 0.01);
   border: 1px solid var(--border-color);
   padding: 4px 10px;
   border-radius: 6px;
   color: var(--text-secondary);
+  transition: var(--transition-cubic);
+}
+
+.project-card:hover .tech-badge {
+  border-color: rgba(255, 255, 255, 0.1);
+  color: var(--text-primary);
 }
 
 .project-links {
@@ -463,9 +522,9 @@ hr {
   text-decoration: none;
   font-size: 0.85rem;
   font-weight: 600;
-  padding: 11px;
-  border-radius: 6px;
-  transition: var(--transition-smooth);
+  padding: 12px;
+  border-radius: 8px;
+  transition: var(--transition-cubic);
 }
 
 .btn-primary {
@@ -475,7 +534,7 @@ hr {
 
 .btn-primary:hover {
   background: #22d3ee;
-  box-shadow: 0 4px 12px rgba(6, 182, 212, 0.3);
+  box-shadow: 0 6px 20px rgba(6, 182, 212, 0.35);
 }
 
 .btn-secondary {
@@ -485,56 +544,54 @@ hr {
 }
 
 .btn-secondary:hover {
-  background: rgba(255, 255, 255, 0.04);
+  background: rgba(255, 255, 255, 0.03);
   border-color: var(--text-secondary);
 }
 
-/* --- 7. Capabilities Section --- */
+/* --- 7. Capabilities Grid Infrastructure --- */
 .services-matrix {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 28px;
+  gap: 32px;
 }
 
 .service-card {
   background: var(--bg-card);
   border: 1px solid var(--border-color);
-  padding: 35px;
-  border-radius: 14px;
-  transition: var(--transition-smooth);
+  padding: 40px;
+  border-radius: 16px;
+  transition: var(--transition-cubic);
 }
 
 .service-card:hover {
-  border-color: rgba(167, 139, 250, 0.25);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-  transform: translateY(-4px);
+  border-color: rgba(167, 139, 250, 0.3);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 25px rgba(167, 139, 250, 0.05);
+  transform: translateY(-6px);
 }
 
 .service-icon {
-  font-size: 2.2rem;
+  font-size: 2.4rem;
   display: block;
-  margin-bottom: 20px;
-  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+  margin-bottom: 24px;
+  transition: var(--transition-cubic);
+}
+
+.service-card:hover .service-icon {
+  transform: scale(1.1) rotate(5deg);
 }
 
 .service-title {
-  font-size: 1.25rem;
+  font-size: 1.3rem;
   font-weight: 700;
   margin-bottom: 14px;
 }
 
-.service-description {
-  font-size: 0.9rem;
-  color: var(--text-secondary);
-  line-height: 1.5;
-}
-
-/* --- 8. Contact Terminal & Adaptive Forms --- */
+/* --- 8. Contact Terminal Dashboard --- */
 footer {
-  background: #06070a;
+  background: #030406;
   border-top: 1px solid var(--border-color);
-  padding: 80px 20px 40px 20px;
-  margin-top: 120px;
+  padding: 100px 20px 40px 20px;
+  margin-top: 140px;
 }
 
 .footer-container {
@@ -546,27 +603,23 @@ footer {
   margin-bottom: 80px;
 }
 
-.contact-info {
-  flex: 1;
-}
-
 .contact-info h2 {
-  font-size: 2rem;
+  font-size: 2.2rem;
   font-weight: 800;
   margin-bottom: 20px;
 }
 
 .contact-info p {
   color: var(--text-secondary);
-  margin-bottom: 35px;
-  max-width: 450px;
+  margin-bottom: 40px;
+  max-width: 460px;
 }
 
 .info-meta-link {
   display: flex;
   flex-direction: column;
   text-decoration: none;
-  margin-bottom: 20px;
+  margin-bottom: 24px;
   width: max-content;
 }
 
@@ -575,19 +628,21 @@ footer {
   text-transform: uppercase;
   color: var(--text-muted);
   font-family: monospace;
-  margin-bottom: 2px;
+  margin-bottom: 4px;
+  letter-spacing: 1px;
 }
 
 .info-meta-link .value {
-  font-size: 1.05rem;
+  font-size: 1.1rem;
   color: var(--text-primary);
   font-weight: 500;
-  transition: var(--transition-smooth);
+  transition: var(--transition-cubic);
 }
 
 .info-meta-link:hover .value {
   color: var(--accent-cyan);
-  text-shadow: 0 0 8px rgba(6, 182, 212, 0.2);
+  transform: translateX(4px);
+  text-shadow: 0 0 10px rgba(6, 182, 212, 0.3);
 }
 
 .contact-form-wrapper {
@@ -597,12 +652,12 @@ footer {
 .contact-form {
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 20px;
 }
 
 .form-row {
   display: flex;
-  gap: 18px;
+  gap: 20px;
 }
 
 .form-group {
@@ -614,12 +669,12 @@ footer {
   width: 100%;
   background: var(--bg-card);
   border: 1px solid var(--border-color);
-  padding: 16px;
-  border-radius: 8px;
+  padding: 18px;
+  border-radius: 10px;
   color: var(--text-primary);
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   font-family: inherit;
-  transition: var(--transition-smooth);
+  transition: var(--transition-cubic);
 }
 
 .contact-form textarea {
@@ -630,26 +685,27 @@ footer {
 .contact-form textarea:focus {
   outline: none;
   border-color: var(--accent-cyan);
-  box-shadow: 0 0 15px rgba(6, 182, 212, 0.12);
-  background: rgba(18, 20, 32, 0.9);
+  box-shadow: 0 0 20px rgba(6, 182, 212, 0.15);
+  background: #111424;
 }
 
 .submit-btn {
   background: var(--text-primary);
   color: var(--bg-main);
   border: none;
-  padding: 16px;
-  border-radius: 8px;
-  font-weight: 600;
+  padding: 18px;
+  border-radius: 10px;
+  font-weight: 700;
   font-size: 0.95rem;
   cursor: pointer;
-  transition: var(--transition-smooth);
+  transition: var(--transition-cubic);
 }
 
 .submit-btn:hover {
   background: var(--accent-cyan);
   color: var(--bg-main);
-  box-shadow: 0 4px 20px rgba(6, 182, 212, 0.3);
+  box-shadow: 0 8px 25px rgba(6, 182, 212, 0.35);
+  transform: translateY(-2px);
 }
 
 .footer-bottom {
@@ -668,14 +724,14 @@ footer {
   color: var(--text-muted);
   text-decoration: none;
   margin-left: 24px;
-  transition: var(--transition-smooth);
+  transition: var(--transition-cubic);
 }
 
 .footer-bottom-links a:hover {
   color: var(--text-secondary);
 }
 
-/* Accessibility "Skip to Main Content" styling */
+/* Accessibility Skip Anchorage Link */
 .skip-link {
   position: absolute;
   top: -80px;
@@ -693,33 +749,46 @@ footer {
   top: 20px;
 }
 
-/* --- 10. Keyframes System Architecture --- */
-@keyframes float-illustration {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-12px); }
+/* --- 9. Advanced Keyframes Core Engines --- */
+@keyframes dynamicFloat {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-16px) scale(1.02);
+  }
 }
 
-@keyframes pulse-ambient {
-  0% { opacity: 0.6; transform: scale(0.95) translate(0, 0); }
-  100% { opacity: 0.9; transform: scale(1.05) translate(5px, 5px); }
+@keyframes ambientPulse {
+  0% {
+    opacity: 0.5;
+    transform: scale(0.9) rotate(0deg);
+  }
+  100% {
+    opacity: 0.8;
+    transform: scale(1.1) rotate(15deg);
+  }
 }
 
-/* --- 11. Clean Mobile Layout Adapters --- */
+/* --- 10. Clean Responsive Media Engine --- */
 @media (max-width: 968px) {
   main {
-    padding-top: 110px;
+    padding-top: 120px;
   }
   .first {
     flex-direction: column-reverse;
     text-align: center;
-    gap: 40px;
+    gap: 50px;
   }
   .typed-container {
-    font-size: 2.8rem;
+    font-size: 3rem;
   }
   #extend {
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0 auto 40px auto;
+    border-left: none;
+    border-top: 2px solid var(--border-color);
+    padding-left: 0;
+    padding-top: 16px;
   }
   .profile-actions {
     justify-content: center;
@@ -729,12 +798,12 @@ footer {
     background: transparent;
     border: none;
     box-shadow: none;
-    gap: 20px;
+    gap: 24px;
   }
   .experience-node {
     background: var(--bg-card-glass);
     border: 1px solid var(--border-color);
-    border-radius: 14px;
+    border-radius: 16px;
   }
   .vertical-divider {
     display: none;
@@ -745,11 +814,11 @@ footer {
   }
   .form-row {
     flex-direction: column;
-    gap: 18px;
+    gap: 20px;
   }
   .footer-bottom {
     flex-direction: column;
-    gap: 16px;
+    gap: 20px;
     text-align: center;
   }
   .footer-bottom-links a {
