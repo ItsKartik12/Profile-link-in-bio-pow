@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Guess The Number | Engine</title>
+    <link rel="stylesheet" href="02_Style.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <a href="/" class="active">Home</a>
+      <a href="https://leetcode.com/u/ItsKartik1234/" target="_blank"
+        >LeetCode Profile</a
+      >
+    </nav>
+
+    <main class="game-container">
+      <form id="game-form">
+        <h1>Guess Number</h1>
+        <p>A statistical state calculation engine.</p>
+
+        <div class="input-section">
+          <label for="Guess" id="GuessLabel"
+            >Input Target Inference (1-100):</label
+          >
+          <input
+            type="number"
+            min="1"
+            max="100"
+            id="Guess"
+            placeholder="Enter integer..."
+            required
+            autocomplete="off"
+          />
+          <button type="submit" id="submit">Execute Verification</button>
+        </div>
+
+        <div class="resultParas">
+          <p>
+            Previous Execution Vectors: <span id="PreviousGuess">None</span>
+          </p>
+          <p>
+            Remaining Allocation Scopes: <span id="GuessRemaining">10</span>
+          </p>
+          <div class="feedback">
+            <div id="lowOrHi"></div>
+            <div id="lowOrHii"></div>
+          </div>
+        </div>
+      </form>
+    </main>
+
+    <script src="03_Script.js"></script>
+  </body>
+</html>

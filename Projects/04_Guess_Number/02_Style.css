@@ -1,0 +1,241 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family:
+    "Segoe UI",
+    system-ui,
+    -apple-system,
+    sans-serif;
+  background: linear-gradient(135deg, #0d0e15 0%, #1a1c29 100%);
+  color: #f3f4f6;
+  line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  padding: 40px 16px;
+}
+
+/* ====================== NAVBAR ====================== */
+.navbar {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  max-width: 520px;
+  position: sticky;
+  top: 20px;
+  background: rgba(22, 25, 37, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  padding: 10px 20px;
+  border-radius: 50px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  margin-bottom: 60px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.navbar a {
+  text-decoration: none;
+  color: #9ca3af;
+  font-weight: 600;
+  padding: 10px 24px;
+  border-radius: 30px;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+}
+
+.navbar a:hover {
+  color: #fff;
+  background-color: rgba(255, 255, 255, 0.03);
+}
+
+.navbar a.active {
+  background: #06b6d4;
+  color: #0d0e15;
+  box-shadow: 0 4px 14px rgba(6, 182, 212, 0.3);
+}
+
+/* ====================== MAIN CARD ENGINE ====================== */
+form {
+  background: #161925;
+  padding: 40px;
+  border-radius: 20px;
+  width: 100%;
+  max-width: 440px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  border: 1px solid #22263f;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+}
+
+form:hover {
+  transform: translateY(-4px);
+  border-color: rgba(6, 182, 212, 0.3);
+}
+
+form h1 {
+  text-align: center;
+  font-size: 2.2rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #ffffff 30%, #a78bfa 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 12px;
+  letter-spacing: -0.5px;
+}
+
+form > p {
+  text-align: center;
+  color: #9ca3af;
+  font-size: 0.95rem;
+  margin-bottom: 32px;
+}
+
+/* ====================== STRUCTURED LAYOUT ENTRIES ====================== */
+.input-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+#GuessLabel {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #e5e7eb;
+  letter-spacing: 0.3px;
+}
+
+/* Strip native scroll handles on structural numeric entries */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"] {
+  -moz-appearance: textfield;
+  width: 100%;
+  padding: 16px;
+  font-size: 1.5rem;
+  text-align: center;
+  border: 2px solid #22263f;
+  border-radius: 12px;
+  background: #0d0e15;
+  color: #fff;
+  transition: all 0.2s ease;
+  font-weight: 600;
+}
+
+input[type="number"]:focus {
+  outline: none;
+  border-color: #06b6d4;
+  box-shadow: 0 0 0 4px rgba(6, 182, 212, 0.15);
+}
+
+button {
+  width: 100%;
+  padding: 16px;
+  background: linear-gradient(135deg, #6d28d9 0%, #4c1d95 100%);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  font-size: 1.05rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 12px rgba(109, 40, 217, 0.3);
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(109, 40, 217, 0.45);
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+/* ====================== FEEDBACK CONSOLE BLOCK ====================== */
+.resultParas {
+  margin-top: 32px;
+  background: #0d0e15;
+  padding: 24px;
+  border-radius: 14px;
+  border: 1px solid #22263f;
+}
+
+.resultParas p {
+  font-weight: 500;
+  margin-bottom: 12px;
+  color: #9ca3af;
+  font-size: 0.95rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.resultParas p span {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.feedback {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+#lowOrHi {
+  text-align: center;
+  font-weight: 700;
+  font-size: 1.15rem;
+  min-height: 0;
+  padding: 0;
+  border-radius: 8px;
+  transition: all 0.25s ease;
+}
+
+/* Dynamic State Classes mapped by JS engine */
+#lowOrHi.guessHigh {
+  background: rgba(239, 68, 68, 0.1);
+  color: #f87171;
+  padding: 12px;
+  border: 1px solid rgba(239, 68, 68, 0.2);
+}
+
+#lowOrHi.guessLow {
+  background: rgba(16, 185, 129, 0.1);
+  color: #34d399;
+  padding: 12px;
+  border: 1px solid rgba(16, 185, 129, 0.2);
+}
+
+#lowOrHii {
+  text-align: center;
+  font-size: 0.85rem;
+  color: #a78bfa;
+  font-weight: 500;
+  font-family: monospace;
+}
+
+/* ====================== RESPONSIVE INTERFACES ====================== */
+@media (max-width: 480px) {
+  .navbar {
+    top: 12px;
+    padding: 8px 12px;
+    margin-bottom: 40px;
+  }
+  .navbar a {
+    padding: 8px 16px;
+    font-size: 0.9rem;
+  }
+  form {
+    padding: 32px 24px 24px;
+  }
+}

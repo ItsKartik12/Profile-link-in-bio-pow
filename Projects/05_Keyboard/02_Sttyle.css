@@ -1,0 +1,167 @@
+/* --- 1. Global Reset & Architectural Background --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #0d0e15;
+  background-image:
+    linear-gradient(rgba(6, 182, 212, 0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(6, 182, 212, 0.015) 1px, transparent 1px);
+  background-size: 40px 40px;
+  color: #f3f4f6;
+  font-family:
+    "Segoe UI",
+    system-ui,
+    -apple-system,
+    sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  overflow: hidden;
+  padding: 20px;
+}
+
+/* --- 2. Floating Navbar Components --- */
+.navbar {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 12px;
+  padding: 10px 20px;
+  background: rgba(22, 25, 37, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: 50px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: #9ca3af !important;
+  padding: 8px 18px;
+  border-radius: 25px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.navbar a:hover {
+  color: #fff !important;
+  background-color: rgba(255, 255, 255, 0.03);
+}
+
+.navbar a.active {
+  background: #06b6d4;
+  color: #0d0e15 !important;
+  box-shadow: 0 4px 14px rgba(6, 182, 212, 0.3);
+}
+
+/* --- 3. Interaction Console Layout --- */
+#insert {
+  width: 100%;
+  max-width: 650px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+}
+
+.key {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #9ca3af;
+  background: #161925;
+  padding: 30px 40px;
+  border-radius: 14px;
+  border: 1px solid #22263f;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  text-align: center;
+  letter-spacing: -0.3px;
+  animation: pulseGlow 2s infinite alternate; /* Fixed syntax error here */
+}
+
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  background: #161925;
+  border-radius: 14px;
+  border: 1px solid #22263f;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  padding: 8px;
+  transition: transform 0.1s ease-in-out;
+}
+
+table {
+  border-collapse: separate;
+  border-spacing: 0;
+  width: 100%;
+}
+
+th,
+td {
+  padding: 18px 24px;
+  text-align: center;
+}
+
+th {
+  background-color: #0d0e15;
+  color: #06b6d4;
+  font-family: monospace;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  border-bottom: 2px solid #22263f;
+}
+
+td {
+  color: #a78bfa;
+  font-family: monospace;
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+/* --- 4. Micro-Animations --- */
+@keyframes pulseGlow {
+  0% {
+    border-color: #22263f;
+  }
+  100% {
+    border-color: rgba(6, 182, 212, 0.3);
+  }
+}
+
+@keyframes pop {
+  0% {
+    transform: scale(0.98);
+  }
+  50% {
+    transform: scale(1.02);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.pop-anim {
+  animation: pop 0.15s ease-out;
+}
+
+/* --- 5. Responsive Breakpoints --- */
+@media (max-width: 600px) {
+  th,
+  td {
+    padding: 12px 14px;
+    font-size: 1rem;
+  }
+  td {
+    font-size: 1.1rem;
+  }
+}

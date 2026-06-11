@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hardware Event Capture Engine</title>
+
+    <style>
+      /* --- 1. Global Reset & Architectural Background --- */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        background-color: #0d0e15;
+        background-image:
+          linear-gradient(rgba(6, 182, 212, 0.015) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(6, 182, 212, 0.015) 1px, transparent 1px);
+        background-size: 40px 40px;
+        color: #f3f4f6;
+        font-family:
+          "Segoe UI",
+          system-ui,
+          -apple-system,
+          sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        overflow: hidden;
+        padding: 20px;
+      }
+
+      /* --- 2. Floating Navbar Components --- */
+      .navbar {
+        position: fixed;
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 12px;
+        padding: 10px 20px;
+        background: rgba(22, 25, 37, 0.85);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border-radius: 50px;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        z-index: 1000;
+      }
+
+      .navbar a {
+        text-decoration: none;
+        color: #9ca3af !important;
+        padding: 8px 18px;
+        border-radius: 25px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        transition: all 0.2s ease;
+      }
+
+      .navbar a:hover {
+        color: #fff !important;
+        background-color: rgba(255, 255, 255, 0.03);
+      }
+
+      /* --- 3. Interaction Console Layout --- */
+      #insert {
+        width: 100%;
+        max-width: 650px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 200px;
+      }
+
+      .key {
+        font-size: 1.4rem;
+        font-weight: 600;
+        color: #9ca3af;
+        background: #161925;
+        padding: 30px 40px;
+        border-radius: 14px;
+        border: 1px solid #22263f;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        text-align: center;
+        letter-spacing: -0.3px;
+        animation: pulseGlow 2s infinite alternate;
+      }
+
+      .table-wrapper {
+        width: 100%;
+        overflow-x: auto;
+        background: #161925;
+        border-radius: 14px;
+        border: 1px solid #22263f;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        padding: 8px;
+      }
+
+      table {
+        border-collapse: separate;
+        border-spacing: 0;
+        width: 100%;
+      }
+
+      th,
+      td {
+        padding: 18px 24px;
+        text-align: center;
+      }
+
+      th {
+        background-color: #0d0e15;
+        color: #06b6d4;
+        font-family: monospace;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        border-bottom: 2px solid #22263f;
+      }
+
+      td {
+        color: #a78bfa;
+        font-family: monospace;
+        font-size: 1.3rem;
+        font-weight: 600;
+      }
+
+      /* --- 4. Micro-Animations --- */
+      @keyframes pulseGlow {
+        0% {
+          border-color: #22263f;
+        }
+        100% {
+          border-color: rgba(6, 182, 212, 0.3);
+        }
+      }
+
+      @keyframes pop {
+        0% {
+          transform: scale(0.98);
+        }
+        50% {
+          transform: scale(1.02);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+
+      .pop-anim {
+        animation: pop 0.15s ease-out;
+      }
+
+      /* --- 5. Responsive Breakpoints --- */
+      @media (max-width: 600px) {
+        th,
+        td {
+          padding: 12px 14px;
+          font-size: 1rem;
+        }
+        td {
+          font-size: 1.1rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar">
+      <a href="../../index.html">Portfolio</a>
+      <a href="https://leetcode.com/u/ItsKartik1234/" target="_blank"
+        >LeetCode</a
+      >
+      <a
+        href="https://www.linkedin.com/in/kartik-goyal-7058a1358/"
+        target="_blank"
+        >LinkedIn</a
+      >
+    </nav>
+
+    <main id="insert">
+      <div class="key">Press any key to intercept event vectors...</div>
+    </main>
+
+    <script>
+      (() => {
+        const insertContainer = document.querySelector("#insert");
+
+        if (!insertContainer) {
+          console.error(
+            "DOM Injection Target Error: #insert element not detected.",
+          );
+          return;
+        }
+
+        // Store the baseline state to allow simple user resets
+        const baselinePrompt = insertContainer.innerHTML;
+
+        window.addEventListener("keydown", (event) => {
+          // Prevent browser scrolling behaviors on targeted space/arrow interactions
+          if (
+            event.key === " " ||
+            event.key === "ArrowDown" ||
+            event.key === "ArrowUp"
+          ) {
+            event.preventDefault();
+          }
+
+          // Return to home state if Escape is pressed
+          if (event.key === "Escape") {
+            insertContainer.innerHTML = baselinePrompt;
+            return;
+          }
+
+          const normalizedKey = event.key === " " ? "Space" : event.key;
+          const legacyCode = event.keyCode || event.which || "N/A";
+
+          // Inject data display window
+          insertContainer.innerHTML = `
+            <div class="table-wrapper pop-anim" id="active-table">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Event.key</th>
+                    <th>Legacy.which</th>
+                    <th>Event.code</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>${escapeHtml(normalizedKey)}</td>
+                    <td>${legacyCode}</td>
+                    <td>${escapeHtml(event.code)}</td>
+                  </tr>
+                </tbody>
+              </table>
+              <div style="text-align: center; margin-top: 12px; color: #6b7280; font-size: 0.8rem; font-family: sans-serif;">
+                Press <span style="color: #06b6d4; font-weight: bold;">Escape</span> to reset view
+              </div>
+            </div>
+          `;
+
+          // Fresh visual feedback trick on multi-presses
+          const tableWrapper = document.getElementById("active-table");
+          tableWrapper.classList.remove("pop-anim");
+          void tableWrapper.offsetWidth;
+          tableWrapper.classList.add("pop-anim");
+        });
+
+        function escapeHtml(string) {
+          return String(string)
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;")
+            .replace(/'/g, "&#039;");
+        }
+      })();
+    </script>
+  </body>
+</html>
